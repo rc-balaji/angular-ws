@@ -5,6 +5,17 @@
     <link rel="stylesheet" href="style.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script src="app.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body ng-app="demo">
     <div ng-controller="demoCtrl">
@@ -24,32 +35,59 @@
           />
           <p>John Doe</p>
         </div>
-      </div>
+      </div class="container-fluid">
+      <div>
       <div class="container">
         <div class="formContainer">
           <form name="employeeForm" class="employeeForm">
             <div class="row">
-              <div class="col col-50">
-                <label for="firstName">First Name</label>
-                <input id="firstName" ng-model="firstName" name="firstName" />
+              <div class="col col-50" class="form-field">
+                <label class="form-label" for="firstName">First Name</label>
+                <input
+                  class="form-control"
+                  id="firstName"
+                  ng-model="firstName"
+                  name="firstName"
+                  required
+                />
               </div>
-              <div class="col col-50">
-                <label for="lastName">Last Name</label>
-                <input id="lastName" ng-model="lastName" name="lastName" />
+              <div class="col col-50" class="form-field">
+                <label for="lastName" class="form-label">Last Name</label>
+                <input
+                  class="form-control"
+                  id="lastName"
+                  ng-model="lastName"
+                  name="lastName"
+                  required
+                />
               </div>
             </div>
             <div class="row">
-              <div class="col col-50">
-                <label for="jobTitle">Job Title</label>
-                <input id="jobTitle" ng-model="jobTitle" name="jobTitle" />
+              <div class="col col-50" class="form-field">
+                <label for="jobTitle" class="form-label">Job Title</label>
+                <input
+                  class="form-control"
+                  id="jobTitle"
+                  ng-model="jobTitle"
+                  name="jobTitle"
+                  required
+                />
               </div>
-              <div class="col col-50">
-                <label for="yoe">Years Of Experience</label>
-                <input id="yoe" ng-model="yoe" name="yoe" />
+              <div class="col col-50" class="form-field">
+                <label for="yoe" class="form-label">Years Of Experience</label>
+                <input
+                  class="form-control"
+                  id="yoe"
+                  ng-model="yoe"
+                  name="yoe"
+                  required
+                />
               </div>
             </div>
             <div class="btnContainer">
-              <button ng-click="submit()">Submit</button>
+              <button class="btn btn-primary" ng-click="submit()">
+                Submit
+              </button>
             </div>
           </form>
         </div>
@@ -63,7 +101,7 @@
             <th>yoe</th>
           </tr>
 
-          <tr ng-repeat="(key, value) in data">
+          <tr ng-repeat="(key, value) in data track by $index">
             <td>{{value.firstName}}</td>
             <td>{{value.lastName}}</td>
             <td>{{value.jobTitle}}</td>
@@ -71,6 +109,7 @@
           </tr>
         </table>
       </div>
+    </div>
     </div>
   </body>
 </html>
