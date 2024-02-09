@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div ng-app="myApp" ng-init="firstName='John'">
+      <p>Name : <input type="text" ng-model="firstName" /></p>
+      <p>Hello : {{firstName}}</p>
+
+      <div ng-controller="func">
+        <input ng-model="name1" type="text" />
+        <input ng-model="name2" type="text" />
+
+        <p ng-click="click()">{{name1 +" " +name2}}</p>
+      </div>
+
+      <h1>Add 2 numbers</h1>
+      <div ng-controller="addCtrl">
+        Enter Number 1 : <input ng-model="value1" type="number" /><br />
+
+        Enter Number 2 : <input ng-model="value2" type="number" />
+        <br />
+        <button ng-click="add()">Add</button>
+
+        <p ng-model="res" ng-bind="res"></p>
+      </div>
+
+      <h1>Color Change</h1>
+      <div ng-app="myApp" ng-controller="colorCtrl">
+        <input ng-model="color1" type="color" ng-change="change()" />
+        <div
+          ng-style="style"
+        ></div>
+        {{color1}}
+      </div>
+    </div>
+
+    <script>
+      var app = angular.module("myApp", []);
+
+      app.controller("func", ($scope) => {
+        $scope.click = () => {
+          $scope.name1 = "KEaE";
+          $scope.name2 = "KEaY";
+        };
+      });
+
+      app.controller("addCtrl", ($scope) => {
+        $scope.add = () => {
+          $scope.res = $scope.value1 + $scope.value2;
+        };
+      });
+
+      app.controller("colorCtrl", function ($scope) {
+        $scope.color1 = '#000'
+        $scope.style = {
+            width: "300px",
+            height: "300px",
+            border: "2px solid black",
+            "background-color": $scope.color1,
+          };
+
+        $scope.change = function () {
+          $scope.style = {
+            width: "300px",
+            height: "300px",
+            border: "2px solid black",
+            "background-color": $scope.color1,
+          };
+        };
+      });
+    </script>
+  </body>
+</html>

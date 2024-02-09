@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <title>Login Form with AngularJS</title>
+</head>
+<body>
+    <div ng-app="myApp">
+        <div ng-controller="myControl">
+            <h1>Login Form</h1>
+            <form name="form">
+                <input ng-model="email" type="email" placeholder="Email" required>
+                <input ng-model="password" type="password" placeholder="Password" required>
+                <p ng-show="err && !email && !password">Fill the required fields</p>
+                <button type="button" ng-click="submit()">Log in</button>
+            </form>
+
+            <p ng-show="userCred">User Credentials: {{email}} / {{password}}</p>
+        </div>
+    </div>
+
+    <script>
+        var app = angular.module("myApp", []);
+        app.controller("myControl", function($scope) {
+            $scope.email = "";
+            $scope.password = "";
+            $scope.err = false;
+            $scope.userCred = false;
+
+            $scope.submit = function() {
+                if (!$scope.email || !$scope.password) {
+                    $scope.err = true;
+                    $scope.userCred = false;
+                } else {
+                    $scope.err = false;
+                    $scope.userCred = true;
+                }
+            };
+        });
+    </script>
+</body>
+</html>
